@@ -111,5 +111,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2250d9fb1c2a6b4794dfb1af0acdfce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
+  coinValue: 1
   rotateSpeed: 2

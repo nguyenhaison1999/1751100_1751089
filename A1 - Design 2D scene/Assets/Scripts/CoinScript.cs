@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class CoinScript : MonoBehaviour
 {
-    public int score = 0;
+    private LevelManager gameLevelManager;
+    public int coinValue;
+
     public int rotateSpeed = 1;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameLevelManager = FindObjectOfType<LevelManager>();    
     }
 
     // Update is called once per frame
@@ -18,9 +21,13 @@ public class CoinScript : MonoBehaviour
         transform.Rotate(0, rotateSpeed, 0, Space.World);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(gameObject);
-        score += 5;
+        if (other.CompareTag("Player"))
+        {
+            gameLevelManager.AddCoins(coinValue);
+            Destroy(gameObject);
+        }
+            
     }
 }

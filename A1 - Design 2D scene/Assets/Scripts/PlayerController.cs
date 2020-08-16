@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 respawnPoint;
 
+    public LevelManager gameLevelManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,8 @@ public class PlayerController : MonoBehaviour
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
 
         respawnPoint = transform.position;
+
+        gameLevelManager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -64,11 +68,23 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("FallDetector"))
         {
             //player falls into the void
-            transform.position = respawnPoint;
+            gameLevelManager.Respawn();
         }
         if (other.CompareTag("Checkpoint"))
         {
             respawnPoint = other.transform.position;
+        }
+        if (other.CompareTag("MovingPlank"))
+        {
+            this.transform.parent = other.transform;
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("MovingPlank"))
+        {
+            this.transform.parent = null;
         }
     }
 }

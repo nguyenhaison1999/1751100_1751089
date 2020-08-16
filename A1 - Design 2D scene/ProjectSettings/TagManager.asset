@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FallDetector
   - Checkpoint
+  - MovingPlank
   layers:
   - Default
   - TransparentFX
