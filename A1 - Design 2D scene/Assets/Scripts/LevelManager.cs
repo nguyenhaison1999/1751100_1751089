@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         gamePlayer = FindObjectOfType<PlayerController>();
-        score.text = "Scores: " + coins;
+        
     }
 
     // Update is called once per frame
@@ -40,6 +40,6 @@ public class LevelManager : MonoBehaviour
     public void AddCoins(int coinPoints)
     {
         coins += coinPoints;
-        score.text = "Scores: " + coins;
+        score.text = coins.ToString();
     }
 }

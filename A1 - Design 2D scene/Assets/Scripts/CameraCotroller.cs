@@ -19,7 +19,7 @@ public class CameraCotroller : MonoBehaviour
     void Update()
     {
         /* Camera follows player - without offset */
-        transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + offset, transform.position.z);
        
         /* Doesn not work
         playerPosition = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
