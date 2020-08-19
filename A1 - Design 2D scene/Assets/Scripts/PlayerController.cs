@@ -61,6 +61,23 @@ public class PlayerController : MonoBehaviour
 
         playerAnimation.SetFloat("Speed",Math.Abs(rigidBody.velocity.x));
         playerAnimation.SetBool("OnGround", isTouchingGround);
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (Math.Abs(rigidBody.velocity.x) < 0.01 && isTouchingGround)
+            {
+                playerAnimation.Play("PlayerShoot");
+            }
+            else if (Math.Abs(rigidBody.velocity.x) > 0.01 && isTouchingGround)
+            {
+                playerAnimation.Play("Naruto");
+            }
+            else if (!isTouchingGround)
+            {
+                playerAnimation.Play("JumpShoot");
+            }
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
