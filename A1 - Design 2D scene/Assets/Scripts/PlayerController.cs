@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     public LevelManager gameLevelManager;
 
+    public GameObject firePoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
         {
             rigidBody.velocity = new Vector2(movement * speed, rigidBody.velocity.y);
             playerSpriteRenderer.flipX = false;
+
         }
         else if ( movement < 0f)
         {
