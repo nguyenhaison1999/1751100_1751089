@@ -11,13 +11,12 @@ public class Dialog : MonoBehaviour
     public float typingSpeed;
     
     private int index;
-    private AudioSource source;
 
     public GameObject continueButton;
 
     void Start()
     {
-        source = GetComponent<AudioSource>();
+       
         StartCoroutine(Type());    
     }
 
@@ -44,7 +43,6 @@ public class Dialog : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
-        source.Play();
         continueButton.SetActive(false);
 
         if (index < sentences.Length - 1)
@@ -52,7 +50,7 @@ public class Dialog : MonoBehaviour
             index++;
             textDisplay.text = "";
             StartCoroutine(Type());
-            source.Stop();
+
         }
         else
         {
